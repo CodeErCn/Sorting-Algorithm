@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Sorting Algorithms</title>
+    <title>Sorting Algorithms - Selection Sort</title>
 
     <script>
 <?php
@@ -67,22 +67,20 @@
     for($x=0; $x<100; $x++){
       $phpOrigOzz[$x] = rand(0,10000);
     }
-
     echo "var jsOrigOzz=[".implode($phpOrigOzz, ", ")."];";
 
     // Random Array Generator for 1,000 values
     for($y=0; $y<1000; $y++){
       $phpOrigOk[$y] = rand(0,10000);
     }
-
     echo "var jsOrigOk=[".implode($phpOrigOk, ", ")."];";
 
-    // Random Array Generator for 10,000 values
-    for($z=0; $z<10000; $z++){
-      $phpOriginalOzK[$z] = rand(0,10000);
-    }
+    // // Random Array Generator for 10,000 values
+    // for($z=0; $z<10000; $z++){
+    //   $phpOriginalOzK[$z] = rand(0,10000);
+    // }
 
-    echo "var jsOriginalOzK=[".implode($phpOriginalOzK, ", ")."];";
+    // echo "var jsOriginalOzK=[".implode($phpOriginalOzK, ", ")."];";
 
 ?>  
       // JAVASCRIPT FUNCTION SELECTION SORT  //     
@@ -182,6 +180,7 @@
     <p> Result done in Javascript for 100 values</p>
   <script> 
     //Rebuild the array for 100 values
+  
     var jsOzz = [], OzzLength = jsOrigOzz.length, resultJsOzz=[];
     for(m=0; m<OzzLength; m++) {
       jsOzz.push(jsOrigOzz[m]);
