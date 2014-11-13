@@ -57,6 +57,20 @@
       } 
       return $phpArrayIn;
     }
+
+    // PHP FUNCTION BUBBLE SORT //  
+    function phpBubbleSort($phpArrayIn) {
+     for($i=0, $j=count($phpArrayIn); $i<$j; $i++) {
+      for($k=0, $j=count($phpArrayIn); $k<$j-1; $k++) {
+        if($phpArrayIn[$k]>$phpArrayIn[$k+1]) {
+          $temp = $phpArrayIn[$k];
+          $phpArrayIn[$k] = $phpArrayIn[$k+1];
+          $phpArrayIn[$k+1] = $temp;
+        }
+      }
+     }
+     return $phpArrayIn;
+    }
 ?>  
 
   </head>
@@ -92,5 +106,19 @@
     }
 ?>  
 
+<!-- BUBBLE SORT HTML STARTS HERE -->
+      <h1> Bubble Sort </h1>
+      <p> Result done in PHP for 1,000 values</p>
+<?php
+      $time_start_Bubble = microtime();
+      $phpBubble = phpBubbleSort($phpOrig);
+      $time_end_Bubble = microtime();
+      $time_Bubble = $time_end_Bubble - $time_start_Bubble;
+      
+      echo "<p>".$time_Bubble."</p>";
+      foreach($phpBubble AS $value) {
+        echo $value." ";
+      }
+?> 
   </body>
 </html>

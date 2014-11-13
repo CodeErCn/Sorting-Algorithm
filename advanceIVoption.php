@@ -6,12 +6,30 @@
 
     <script>
 <?php
-    //PHP SELECTION SORT //  
     function microtime_float() {
         list($usec, $sec) = explode(" ", microtime());
         return ((float)$usec + (float)$sec);
     }
     
+    // Random Array Generator for 100 values
+    for($x=0; $x<100; $x++){
+      $phpOrigOzz[$x] = rand(0,10000);
+    }
+    echo "var jsOrigOzz=[".implode($phpOrigOzz, ", ")."];";
+
+    // Random Array Generator for 1,000 values
+    for($y=0; $y<1000; $y++){
+      $phpOrigOk[$y] = rand(0,10000);
+    }
+    echo "var jsOrigOk=[".implode($phpOrigOk, ", ")."];";
+
+    // // Random Array Generator for 10,000 values
+    // for($z=0; $z<10000; $z++){
+    //   $phpOriginalOzK[$z] = rand(0,10000);
+    // }
+    // echo "var jsOriginalOzK=[".implode($phpOriginalOzK, ", ")."];";
+    
+    //PHP SELECTION SORT //  
     function phpSelectionSort($phpArrayIn) {
       $position;
       $min;
@@ -43,7 +61,7 @@
         $posMax = $y-($l+1);
         $valMin = $php2ArrayIn[$posMin];
         $valMax = $php2ArrayIn[$posMax];
-        for($k=$l; $k<$y-($l+1); $k++) {
+        for($k=$l; $k<$y-($l); $k++) {
 
           if($valMax < $php2ArrayIn[$k]) {
             $valMax = $php2ArrayIn[$k];
@@ -63,24 +81,6 @@
     }
 
 
-    // Random Array Generator for 100 values
-    for($x=0; $x<100; $x++){
-      $phpOrigOzz[$x] = rand(0,10000);
-    }
-    echo "var jsOrigOzz=[".implode($phpOrigOzz, ", ")."];";
-
-    // Random Array Generator for 1,000 values
-    for($y=0; $y<1000; $y++){
-      $phpOrigOk[$y] = rand(0,10000);
-    }
-    echo "var jsOrigOk=[".implode($phpOrigOk, ", ")."];";
-
-    // // Random Array Generator for 10,000 values
-    // for($z=0; $z<10000; $z++){
-    //   $phpOriginalOzK[$z] = rand(0,10000);
-    // }
-
-    // echo "var jsOriginalOzK=[".implode($phpOriginalOzK, ", ")."];";
 
 ?>  
       // JAVASCRIPT FUNCTION SELECTION SORT  //     
@@ -114,11 +114,12 @@
           posMax = y-(l+1);
           valMin = jsTwoArrayIn[posMin];
           valMax = jsTwoArrayIn[posMax];
-          for(k=l; k<y-(l+1); k++) {
+          for(k=l; k<y-(l); k++) {
             if(valMax < jsTwoArrayIn[k]) {
               valMax = jsTwoArrayIn[k];
               posMax = k;
-            } else if(valMin > jsTwoArrayIn[k]) {
+            } 
+            if(valMin > jsTwoArrayIn[k]) {
               valMin = jsTwoArrayIn[k];
               posMin = k;
             }

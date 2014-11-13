@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Sorting Algorithms - Insertion Sort</title>
+    <title>Sorting Algorithms - Bubble Sort</title>
 
     <script>
 <?php
@@ -10,6 +10,7 @@
           list($usec, $sec) = explode(" ", microtime());
           return ((float)$usec + (float)$sec);
       }
+
       // Random Array Generator for 100 values
       for($x=0; $x<100; $x++){
         $phpOrigOzz[$x] = rand(0,10000);
@@ -23,52 +24,30 @@
       echo "var jsOrigOk=[".implode($phpOrigOk, ", ")."];";
       
       
-      // PHP FUNCTION INSERTION SORT //  
-      function phpinsertionSort($phpArrayIn) {
-        $phpArrayLength = count($phpArrayIn);
-        $min;
-        if($phpArrayIn[1]<$phpArrayIn[0]) {
-          $min = $phpArrayIn[1];
-          $phpArrayIn[1] = $phpArrayIn[0];
-          $phpArrayIn[0] = $min;
-        }
-
-        for($m=2; $m<$phpArrayLength; $m++) {
-          $min = $phpArrayIn[$m];
-          for($n=$m; $n>=1; $n--) {
-            if($phpArrayIn[$n-1]<$min) {
-              break;
-            } else if ($phpArrayIn[$n-1]>$min) {
-              $phpArrayIn[$n]=$phpArrayIn[$n-1];
-              $phpArrayIn[$n-1] = $min;
-            }
+      // PHP FUNCTION BUBBLE SORT //  
+      function phpBubbleSort($phpArrayIn) {
+       for($i=0, $j=count($phpArrayIn); $i<$j; $i++) {
+        for($k=0, $j=count($phpArrayIn); $k<$j-1; $k++) {
+          if($phpArrayIn[$k]>$phpArrayIn[$k+1]) {
+            $temp = $phpArrayIn[$k];
+            $phpArrayIn[$k] = $phpArrayIn[$k+1];
+            $phpArrayIn[$k+1] = $temp;
           }
-        } 
-        return $phpArrayIn;
+        }
+       }
+       return $phpArrayIn;
       }
 ?>  
-      // JAVASCRIPT FUNCTION INSERTION SORT //     
-      function insertionSort(jsArrayIn) {
-        console.log(jsArrayIn);
-
-        var arrayLength = jsArrayIn.length, min;
-        //compare the first two values in the array
-        if(jsArrayIn[1]<jsArrayIn[0]) {
-          min = jsArrayIn[1]
-          jsArrayIn[1] = jsArrayIn[0];
-          jsArrayIn[0] = min;
-        } 
-
-        for(i=2; i<arrayLength; i++) {
-          min = jsArrayIn[i];
-          for(j=i; j>=1; j--) {
-            if (jsArrayIn[j-1]<min) {
-              break;
-            } else if (jsArrayIn[j-1]>min) {
-              jsArrayIn[j]=jsArrayIn[j-1]; 
-              jsArrayIn[j-1] = min;
-            } 
-          }  
+      // JAVASCRIPT FUNCTION BUBBLE SORT //     
+      function BubbleSort(jsArrayIn) {
+        for(i=0,j=jsArrayIn.length; i<j; i++) {
+          for(k=0; k<j-1; k++) {
+            if(jsArrayIn[k]>jsArrayIn[k+1]) {
+              var temp = jsArrayIn[k];
+              jsArrayIn[k] = jsArrayIn[k+1];
+              jsArrayIn[k+1] = temp;
+            }
+          }
         }
         return jsArrayIn;
       }
@@ -77,25 +56,25 @@
   <body>
  
 
-<!-- INSERTION SORT HTML STARTS HERE -->
-      <h1> Insertion Sort </h1>
+<!-- BUBBLE SORT HTML STARTS HERE -->
+      <h1> Bubble Sort </h1>
       <p> Result done in PHP for 100 values</p>
 <?php
       $time_start_Ozz = microtime();
-      $php_100 = phpInsertionSort($phpOrigOzz);
+      $phpBubbleOzz = phpBubbleSort($phpOrigOzz);
       $time_end_Ozz = microtime();
       $time_Ozz = $time_end_Ozz - $time_start_Ozz;
       
       echo "<p>".$time_Ozz."</p>";
-      foreach($php_100 AS $value) {
+      foreach($phpBubbleOzz AS $value) {
         echo $value." ";
       }
 ?> 
  
-      <p> Result done in PHP for 1,000 values</p>
+    <p> Result done in PHP for 1,000 values</p>
 <?php
       $time_start_Ok = microtime();
-      $php_1000 = phpInsertionSort($phpOrigOk);
+      $php_1000 = phpBubbleSort($phpOrigOk);
       $time_end_Ok = microtime();
       $time_Ok = $time_end_Ok - $time_start_Ok;
       
@@ -104,7 +83,8 @@
         echo $value." ";
       }
 ?>  
-<!-- INSERTION SORT HTML STARTS HERE -->
+
+<!-- BUBBLE SORT HTML STARTS HERE -->
       <p> Result done in Javascript for 100 values</p>
     <script> 
       //Rebuild the array for 100 values
@@ -113,7 +93,7 @@
         jsOzz.push(jsOriginalOzz[m]);
       }
       
-      resultJsOzz = insertionSort(jsOzz);
+      resultJsOzz = BubbleSort(jsOzz);
       document.write(resultJsOzz.join(" "));
     </script>
 
@@ -125,7 +105,7 @@
         jsOk.push(jsOrigOk[n]);
       }
       
-      resultJsOk = insertionSort(jsOk);
+      resultJsOk = BubbleSort(jsOk);
       document.write(resultJsOk.join(" "));
     </script>
   </body>
