@@ -25,51 +25,87 @@
       
       // PHP FUNCTION INSERTION SORT //  
       function phpinsertionSort($phpArrayIn) {
-        $phpArrayLength = count($phpArrayIn);
-        $min;
-        if($phpArrayIn[1]<$phpArrayIn[0]) {
-          $min = $phpArrayIn[1];
-          $phpArrayIn[1] = $phpArrayIn[0];
-          $phpArrayIn[0] = $min;
-        }
+        // $phpArrayLength = count($phpArrayIn);
+        // $min;
+        // if($phpArrayIn[1]<$phpArrayIn[0]) {
+        //   $min = $phpArrayIn[1];
+        //   $phpArrayIn[1] = $phpArrayIn[0];
+        //   $phpArrayIn[0] = $min;
+        // }
 
-        for($m=2; $m<$phpArrayLength; $m++) {
-          $min = $phpArrayIn[$m];
-          for($n=$m; $n>=1; $n--) {
-            if($phpArrayIn[$n-1]<$min) {
+        // for($m=2; $m<$phpArrayLength; $m++) {
+        //   $min = $phpArrayIn[$m];
+        //   for($n=$m; $n>=1; $n--) {
+        //     if($phpArrayIn[$n-1]<$min) {
+        //       break;
+        //     } else if ($phpArrayIn[$n-1]>$min) {
+        //       $phpArrayIn[$n]=$phpArrayIn[$n-1];
+        //       $phpArrayIn[$n-1] = $min;
+        //     }
+        //   }
+        // } 
+        
+        //modified version of insertion sort
+        for($i=1, $c=count($phpArrayIn); $i<$c; $i++) {
+          $temp = $phpArrayIn[$i];
+          $position = 0;
+
+          for($j=$i-1; $j>=0; $j--) {
+            if($phpArrayIn[$j]> $temp) {
+              $phpArrayIn[$j+1]=$phpArrayIn[$j];
+              $position = $j;
+            } else {
               break;
-            } else if ($phpArrayIn[$n-1]>$min) {
-              $phpArrayIn[$n]=$phpArrayIn[$n-1];
-              $phpArrayIn[$n-1] = $min;
             }
+            
+            $phpArrayIn[$position] = $temp;
           }
-        } 
+        }
         return $phpArrayIn;
       }
 ?>  
       // JAVASCRIPT FUNCTION INSERTION SORT //     
       function insertionSort(jsArrayIn) {
-        console.log(jsArrayIn);
+    
+        // var arrayLength = jsArrayIn.length, min;
+        // //compare the first two values in the array
+        // if(jsArrayIn[1]<jsArrayIn[0]) {
+        //   min = jsArrayIn[1]
+        //   jsArrayIn[1] = jsArrayIn[0];
+        //   jsArrayIn[0] = min;
+        // } 
 
-        var arrayLength = jsArrayIn.length, min;
-        //compare the first two values in the array
-        if(jsArrayIn[1]<jsArrayIn[0]) {
-          min = jsArrayIn[1]
-          jsArrayIn[1] = jsArrayIn[0];
-          jsArrayIn[0] = min;
-        } 
+        // for(i=2; i<arrayLength; i++) {
+        //   min = jsArrayIn[i];
+        //   for(j=i; j>=1; j--) {
+        //     if (jsArrayIn[j-1]<min) {
+        //       break;
+        //     } else if (jsArrayIn[j-1]>min) {
+        //       jsArrayIn[j]=jsArrayIn[j-1]; 
+        //       jsArrayIn[j-1] = min;
+        //     } 
+        //   }  
+        // }
+        // 
+      
+        // The modified version of insertion sort
+        
+        for(var i=1, c=jsArrayIn.length; i<c; i++) {
+          var temp = jsArrayIn[i];
+          var position = 0;
 
-        for(i=2; i<arrayLength; i++) {
-          min = jsArrayIn[i];
-          for(j=i; j>=1; j--) {
-            if (jsArrayIn[j-1]<min) {
+          for(var j=i-1; j>=0; j--) {
+            if(jsArrayIn[j]> temp) {
+              jsArrayIn[j+1]=jsArrayIn[j];
+              position = j;
+            } else {
               break;
-            } else if (jsArrayIn[j-1]>min) {
-              jsArrayIn[j]=jsArrayIn[j-1]; 
-              jsArrayIn[j-1] = min;
-            } 
-          }  
+            }
+            
+            jsArrayIn[position] = temp;
+          }
         }
+
         return jsArrayIn;
       }
     </script>
