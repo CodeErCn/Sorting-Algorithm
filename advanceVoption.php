@@ -46,9 +46,9 @@
         // } 
         
         //modified version of insertion sort
+        $position = 0;
         for($i=1, $c=count($phpArrayIn); $i<$c; $i++) {
           $temp = $phpArrayIn[$i];
-          $position = 0;
 
           for($j=$i-1; $j>=0; $j--) {
             if($phpArrayIn[$j]> $temp) {
@@ -90,9 +90,10 @@
       
         // The modified version of insertion sort
         
+        var position = 0;
+        
         for(var i=1, c=jsArrayIn.length; i<c; i++) {
           var temp = jsArrayIn[i];
-          var position = 0;
 
           for(var j=i-1; j>=0; j--) {
             if(jsArrayIn[j]> temp) {
@@ -101,9 +102,9 @@
             } else {
               break;
             }
-            
-            jsArrayIn[position] = temp;
           }
+          
+          jsArrayIn[position] = temp;
         }
 
         return jsArrayIn;
