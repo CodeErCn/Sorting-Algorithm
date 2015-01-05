@@ -46,20 +46,18 @@
         // } 
         
         //modified version of insertion sort
-        $position = 0;
+        $position = -1;
         for($i=1, $c=count($phpArrayIn); $i<$c; $i++) {
           $temp = $phpArrayIn[$i];
 
-          for($j=$i-1; $j>=0; $j--) {
-            if($phpArrayIn[$j]> $temp) {
+          for($j=$i-1; $j>=0 && $phpArrayIn[$j]>$temp; $j--) {
+           
               $phpArrayIn[$j+1]=$phpArrayIn[$j];
               $position = $j;
-            } else {
-              break;
-            }
-            
-            $phpArrayIn[$position] = $temp;
           }
+          
+          $phpArrayIn[$position] = $temp;
+          $position = -1;
         }
         return $phpArrayIn;
       }
@@ -90,21 +88,20 @@
       
         // The modified version of insertion sort
         
-        var position = 0;
+        var position = -1;
         
         for(var i=1, c=jsArrayIn.length; i<c; i++) {
           var temp = jsArrayIn[i];
 
-          for(var j=i-1; j>=0; j--) {
-            if(jsArrayIn[j]> temp) {
-              jsArrayIn[j+1]=jsArrayIn[j];
-              position = j;
-            } else {
-              break;
-            }
-          }
+          for(var j=i-1; j>=0 && jsArrayIn[j]>temp; j--) {
+    
+            jsArrayIn[j+1]=jsArrayIn[j];
+            position = j;
+          
+          }          
           
           jsArrayIn[position] = temp;
+          position = -1;
         }
 
         return jsArrayIn;
